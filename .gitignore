@@ -1,0 +1,11 @@
+**/node_modules/
+**/target/
+**/artifacts/
+**/playwright-report/
+**/test-results/
+**/.env
+**/.env.*
+**/application-local.properties
+**/*.log
+**/.DS_Store
+**/Thumbs.db

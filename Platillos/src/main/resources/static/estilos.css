@@ -1,0 +1,46 @@
+* { box-sizing: border-box; }
+body { margin: 24px; font-family: Arial, sans-serif; color: #222; background: white; }
+header, main, footer { max-width: 1000px; margin: 0 auto; }
+h1 { font-size: 26px; } h2 { font-size: 21px; }
+nav { display: flex; flex-wrap: wrap; gap: 16px; padding-bottom: 18px; border-bottom: 1px solid #bbb; }
+a { color: #175b7a; } [aria-current="page"] { font-weight: bold; }
+section { margin-top: 24px; }
+label { display: block; margin: 12px 0 6px; }
+input:not([type="checkbox"]), textarea { font: inherit; width: 100%; padding: 8px; border: 1px solid #999; border-radius: 0; background: white; color: #222; }
+input[type="search"] { display: block; max-width: 540px; margin-bottom: 12px; }
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin: 20px 0; }
+.tarjeta { border: 1px solid #999; padding: 16px; background: white; min-width: 0; overflow-wrap: anywhere; }
+.tarjeta h3 { font-size: 18px; margin: 0 0 12px; }
+.tarjeta p { line-height: 1.4; margin: 8px 0; }
+.platillos .tarjeta { user-select: none; cursor: default; }
+.precio { font-weight: bold; }
+button { font: inherit; padding: 7px 12px; border: 1px solid #888; background: #eee; color: #222; cursor: pointer; }
+button:disabled { cursor: default; opacity: .6; }
+button:focus-visible, a:focus-visible, summary:focus-visible { outline: 2px solid #175b7a; outline-offset: 3px; }
+details { margin-top: 30px; border-top: 1px solid #bbb; padding-top: 18px; }
+summary { cursor: pointer; font-weight: bold; }
+form { max-width: 420px; }
+.checkbox { display: flex; align-items: center; gap: 6px; }
+.acciones { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.tabla-contenedor { overflow-x: auto; margin-top: 20px; }
+table { border-collapse: collapse; width: 100%; text-align: left; }
+caption { text-align: left; font-weight: bold; padding: 10px 0; }
+th, td { border: 1px solid #aaa; padding: 9px; } td button { margin: 3px; }
+.error { color: #a12424; }
+.personaje { display: block; text-align: left; font: inherit; width: 100%; cursor: pointer; }
+.personaje:hover { border-color: #175b7a; }
+.personaje img { width: 100%; aspect-ratio: 1; object-fit: cover; margin-bottom: 12px; }
+.paginacion { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin: 20px 0; }
+.spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid #ccc; border-top-color: #175b7a; border-radius: 50%; animation: girar .8s linear infinite; margin-right: 8px; vertical-align: middle; }
+@keyframes girar { to { transform: rotate(360deg); } }
+dialog { width: min(540px, 90vw); max-height: 85vh; border: 1px solid #777; padding: 22px; overflow-y: auto; }
+dialog::backdrop { background: #0007; }
+dialog img { display: block; width: 200px; max-width: 100%; margin: 16px 0; }
+dialog p { line-height: 1.5; }
+footer { padding-top: 25px; padding-bottom: 20px; }
+[hidden] { display: none !important; }
+@media (max-width: 760px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 480px) { body { margin: 16px; } .grid { grid-template-columns: 1fr; } h1 { font-size: 23px; } }
+@media (prefers-reduced-motion: reduce) { .spinner { animation: none; } }
+
+.boton { display: inline-block; font: inherit; padding: 7px 12px; border: 1px solid #888; background: #eee; color: #222; text-decoration: none; }

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Platillos del restaurante</title>
+  <link rel="stylesheet" href="/estilos.css">
+  <script type="module" src="/platillos.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Platillos del restaurante</h1>
+    <nav aria-label="Páginas">
+      <a href="/" aria-current="page">Inicio</a>
+    </nav>
+  </header>
+  <main>
+    <div class="acciones">
+      <a class="boton" href="/lista-platillos.html">Lista de platillos</a>
+      <a class="boton" href="/nuevo-platillo.html">Nuevo platillo</a>
+    </div>
+    <section aria-labelledby="titulo-menu">
+      <h2 id="titulo-menu">Nuestro menú</h2>
+      <label for="buscar">Buscar por nombre, categoría o descripción</label>
+      <input id="buscar" type="search" placeholder="Buscar platillos..." autocomplete="off" disabled>
+      <p id="estado" role="status" aria-live="polite">Cargando platillos...</p>
+      <button id="reintentar" type="button" hidden>Volver a cargar</button>
+      <div id="tarjetas" class="grid platillos" aria-label="Platillos disponibles"></div>
+    </section>
+  </main>
+  <footer><a href="#">Regresar arriba</a></footer>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "name": "rick-and-morty",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "node tools/iniciar.cjs",
+    "test": "playwright test",
+    "test:e2e": "playwright test tests/e2e",
+    "test:mcp": "playwright test tests/mcp",
+    "test:live": "node tools/pruebas-live.cjs",
+    "report": "playwright show-report artifacts/reporte-html",
+    "mcp": "node tools/playwright-mcp.cjs"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/sdk": "1.32.1",
+    "@playwright/mcp": "0.0.83",
+    "@playwright/test": "1.64.1"
+  }
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nuevo platillo</title>
+  <link rel="stylesheet" href="/estilos.css">
+  <script type="module" src="/nuevo-platillo.js"></script>
+</head>
+<body>
+  <header><h1 id="titulo-formulario">Nuevo platillo</h1></header>
+  <main>
+    <form id="formulario">
+      <label for="nombre">Nombre</label>
+      <input id="nombre" name="nombre" required maxlength="100">
+      <label for="categoria">Categoría</label>
+      <input id="categoria" name="categoria" placeholder="Entrada, plato fuerte, postre..." required maxlength="100">
+      <label for="descripcion">Descripción</label>
+      <textarea id="descripcion" name="descripcion" rows="3" maxlength="500"></textarea>
+      <label for="precio">Precio ($)</label>
+      <input id="precio" name="precio" type="number" min="0" max="99999999.99" step="0.01" required>
+      <label class="checkbox"><input id="disponible" name="disponible" type="checkbox" checked> Disponible</label>
+      <div class="acciones"><button id="guardar" type="submit" disabled>Guardar platillo</button></div>
+    </form>
+    <p id="mensaje" role="status" aria-live="polite"></p>
+    <button id="reintentar" type="button" hidden>Volver a cargar</button>
+  </main>
+  <footer><a id="regresar" class="boton" href="/">Regresar</a></footer>
+</body>
+</html>
