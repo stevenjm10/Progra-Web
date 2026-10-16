@@ -1,66 +1,53 @@
-# Pagina 1
+# Page 1: Restaurant dishes
 
-Proyecto independiente: Java 17, Spring Boot, PostgreSQL y frontend HTML/CSS/JavaScript vanilla. Ya no incluye Rick and Morty ni depende de su carpeta.
+Independent Java 17 / Spring Boot / PostgreSQL application with a vanilla HTML, CSS and JavaScript frontend. The visible interface remains Spanish.
 
-## Abrir la aplicación
+## Run
 
-En NetBeans, abrir **esta carpeta Pagina 1**, hacer Clean and Build y Run. Dirección: **http://localhost:8080/**. La clase principal es `uce.edu.Platillos.PlatillosApplication`.
+Start PostgreSQL on localhost:5432 and create the `reservas` database. Local database settings are included in `src/main/resources/application.properties` at the author's explicit request for grading. Adjust them if your PostgreSQL installation uses different settings.
 
-También puede arrancarse desde PowerShell en esta carpeta:
+Open this folder in NetBeans, select Clean and Build, then Run. The main class is `uce.edu.restaurant.RestaurantApplication`. Alternatively:
 
 ```powershell
+npm ci
 npm start
 ```
 
-Necesita Java 17 y PostgreSQL activo. Se conserva la conexión a la base `reservas` en `src/main/resources/application.properties` y la tabla `platillo`, incluidos los 10 platillos existentes. La separación no borra ni copia datos de PostgreSQL. No hace falta ejecutar de nuevo `datos-ejemplo.sql`; el archivo sirve para cargar ejemplos si se usa una base nueva y evita duplicar nombres existentes.
+Open http://localhost:8080/. Java 17 and Node.js 20+ are required. Spring Boot creates the `dish` table on a fresh database; execute `sample-data.sql` to load ten example dishes without duplicating existing names.
 
-## Archivos de la aplicación
+### Existing database upgrade
 
-- `src/main/java/uce/edu/Platillos/`: modelo, repositorio, servicio, controlador y clase principal.
-- `src/main/resources/static/index.html`: tarjetas de texto, búsqueda inmediata y botones de navegación.
-- `lista-platillos.html` / `lista-platillos.js`: tabla, editar y eliminar.
-- `nuevo-platillo.html` / `nuevo-platillo.js`: crear; con `?id=ID` permite editar. Botón Regresar al final.
-- `api.js`: llamadas fetch a `/api/platillos`.
-- `estilos.css`: estilos básicos y media queries.
+Before starting this version against the old schema, run `migrate-legacy-schema.sql` in the same database. It renames the old table and columns to English while preserving IDs and all existing rows. The script is transactional and can be run again after migration. The database name `reservas` is retained to preserve the existing connection.
 
-Endpoints: GET y POST `/api/platillos`; GET, PUT y DELETE `/api/platillos/{id}`.
+## Source files
 
-## Pruebas Playwright
+- `src/main/java/uce/edu/restaurant/`: `RestaurantApplication`, `Dish`, `DishRepository`, `DishService` and `DishController`.
+- `src/main/resources/static/index.html` and `dishes.js`: non-clickable text cards and immediate local search.
+- `dish-list.html` / `dish-list.js`: registered dishes, edit and delete actions.
+- `dish-form.html` / `dish-form.js`: create a dish or edit with `?id=ID`; return button at the bottom.
+- `api.js`: shared fetch helper using async/await.
+- `styles.css`: basic styling and responsive Grid/Flexbox rules.
 
-Node.js 20 o posterior y Microsoft Edge instalado. Antes de la primera ejecución, instalar las dependencias con `npm ci`.
+## REST API
 
-```powershell
-npm test
-npm run report
+| Method | Path | Action |
+| --- | --- | --- |
+| GET | `/api/dishes` | List dishes |
+| GET | `/api/dishes/{id}` | Find a dish |
+| POST | `/api/dishes` | Create a dish |
+| PUT | `/api/dishes/{id}` | Update a dish |
+| DELETE | `/api/dishes/{id}` | Delete a dish |
+
+```json
+{"name":"Seco de pollo","category":"Plato fuerte","description":"Pollo con arroz","price":4.50,"available":true}
 ```
 
-Las pruebas arrancan **su propia instancia de Spring Boot en el puerto 8090**, prueban las pantallas y paran el servidor al finalizar. PostgreSQL debe estar activo. No ocupan el puerto 8080 de NetBeans.
+Creation returns 201, deletion 204, missing IDs 404 and invalid input 400. JSON properties and code identifiers are English; the displayed dish data and validation messages are Spanish.
 
-- `npm run test:e2e`: navegación, botones Regresar, tarjetas, búsqueda inmediata y CRUD completo desde la UI con persistencia comprobada tras recargar.
-- `npm run test:mcp`: conecta un cliente MCP al servidor real de Playwright y comprueba las pantallas mediante sus herramientas; no guarda datos en esta prueba.
-- `mvnw.cmd test`: 8 pruebas HTTP Java con repositorio simulado, independientes de PostgreSQL.
+## Tests
 
-La prueba CRUD crea un registro de nombre único `E2E-...` y elimina solo ese registro, incluso si falla una comprobación. Los informes HTML, JSON, trazas y capturas se guardan en `artifacts/`.
+Microsoft Edge is used by default. Run `npm test` for the UI and MCP tests, `npm run test:e2e` for browser workflows, `npm run test:mcp` for the actual MCP connection, and `npm run report` to view the report. The test server runs on port 8090. CRUD tests verify real persistence after reload and remove only their uniquely named temporary dish. Run `mvnw.cmd test` for eight Java endpoint tests with a mocked repository.
 
-## Agente con MCP
+## UI agent
 
-- `.codex/config.toml`: registra Playwright MCP para este proyecto.
-- `.codex/agents/validador-ui.toml`: define el agente `validador_ui`, que hereda el modelo de tu sesión.
-- `tools/playwright-mcp.cjs`: arranca la versión local del MCP en Edge headless con sesión aislada.
-- `tests/mcp/conexion.spec.js`: comprueba la conexión MCP y sus herramientas realmente; no simula el servidor MCP.
-
-Abre **Pagina 1 como proyecto en Codex** y vuelve a abrir la sesión para cargar su configuración. Acepta la confianza de esta carpeta si Codex lo solicita. Arranca la aplicación y envía:
-
-> Usa el agente validador_ui conectado al MCP Playwright para validar http://localhost:8080. Prueba navegación, búsqueda, crear, editar, recargar, eliminar y los botones Regresar. Conserva los registros anteriores y guarda el informe y las capturas en artifacts/mcp.
-
-La definición del agente y el MCP están integrados en el proyecto. El agente se ejecuta cuando lo solicitas en una sesión que haya cargado esta configuración; las pruebas npm son automatización reproducible y no una llamada a un modelo de IA. Si no aparecen herramientas Playwright en Codex, hay que recargar esa sesión, no afirmar que el MCP está activo en una sesión antigua.
-
-## PostgreSQL para la evaluación
-
-La URL, el usuario y la contraseña de PostgreSQL ya están definidos en `src/main/resources/application.properties`, tal como pidió el autor. No se necesitan variables de entorno.
-
-1. Tener PostgreSQL activo en `localhost:5432` y creada la base `reservas`.
-2. Abrir este proyecto en NetBeans y ejecutar Run, o usar `npm start`.
-3. Spring Boot crea la tabla `platillo` si aún no existe. Para cargar los 10 ejemplos en una base nueva, ejecutar `datos-ejemplo.sql` en esa base. El script evita repetir los nombres existentes.
-
-Si el PostgreSQL del equipo del evaluador usa otro usuario o contraseña, se ajustan en `application.properties`.
+`.codex/config.toml` registers the local Playwright MCP server; `.codex/agents/ui-validator.toml` defines `ui_validator`. Open this project folder in Codex and reopen the session. Start the application, then ask the agent to validate http://localhost:8080/. It should preserve existing records, use actual browser tools and save screenshots and results under `artifacts/mcp/`. Automated tests do not themselves execute an AI model.

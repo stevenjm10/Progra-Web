@@ -4,36 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Rick and Morty</title>
-  <link rel="stylesheet" href="/estilos.css">
-  <script type="module" src="/personajes.js"></script>
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/characters.js"></script>
 </head>
 <body>
   <header>
     <h1>Rick and Morty</h1>
   </header>
   <main>
-    <section aria-labelledby="titulo-personajes">
-      <h2 id="titulo-personajes">Personajes</h2>
+    <section aria-labelledby="characters-title">
+      <h2 id="characters-title">Personajes</h2>
       <p>Selecciona un personaje para ver su imagen y más detalles.</p>
-      <p id="resumen"></p>
-      <label for="buscar-personaje">Buscar personaje por nombre</label>
-      <input id="buscar-personaje" type="search" placeholder="Ejemplo: Rick" autocomplete="off">
+      <p id="summary"></p>
+      <label for="character-search">Buscar personaje por nombre</label>
+      <input id="character-search" type="search" placeholder="Ejemplo: Rick" autocomplete="off">
       <p>La búsqueda se realiza 4 segundos después de dejar de escribir.</p>
-      <div role="status" aria-live="polite"><span id="spinner" class="spinner" hidden aria-hidden="true"></span><span id="estado-personajes">Cargando personajes...</span></div>
-      <button id="reintentar" type="button" hidden>Reintentar</button>
-      <div id="personajes" class="grid" aria-label="Personajes" aria-busy="true"></div>
-      <div class="paginacion">
-        <button id="anterior" type="button" disabled>Anterior</button>
-        <span id="pagina">Página 1</span>
-        <button id="siguiente" type="button" disabled>Siguiente</button>
+      <div role="status" aria-live="polite"><span id="spinner" class="spinner" hidden aria-hidden="true"></span><span id="character-status">Cargando personajes...</span></div>
+      <button id="retry" type="button" hidden>Reintentar</button>
+      <div id="characters" class="grid" aria-label="Personajes" aria-busy="true"></div>
+      <div class="pagination">
+        <button id="previous" type="button" disabled>Anterior</button>
+        <span id="page-number">Página 1</span>
+        <button id="next" type="button" disabled>Siguiente</button>
       </div>
     </section>
-    <dialog id="detalle" aria-labelledby="titulo-detalle">
-      <h2 id="titulo-detalle">Detalle del personaje</h2>
-      <div id="contenido-detalle"></div>
-      <p id="error-detalle" role="status"></p>
-      <button id="reintentar-detalle" type="button" hidden>Reintentar detalles</button>
-      <button id="cerrar" type="button">Cerrar</button>
+    <dialog id="details" aria-labelledby="details-title">
+      <h2 id="details-title">Detalle del personaje</h2>
+      <div id="details-content"></div>
+      <p id="details-error" role="status"></p>
+      <button id="retry-details" type="button" hidden>Reintentar detalles</button>
+      <button id="close" type="button">Cerrar</button>
     </dialog>
   </main>
 </body>

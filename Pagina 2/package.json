@@ -5,12 +5,12 @@
   "type": "module",
   "engines": { "node": ">=20" },
   "scripts": {
-    "start": "node tools/iniciar.cjs",
+    "start": "node tools/start.cjs",
     "test": "playwright test",
     "test:e2e": "playwright test tests/e2e",
     "test:mcp": "playwright test tests/mcp",
-    "test:live": "node tools/pruebas-live.cjs",
-    "report": "playwright show-report artifacts/reporte-html",
+    "test:live": "node tools/live-tests.cjs",
+    "report": "playwright show-report artifacts/html-report",
     "mcp": "node tools/playwright-mcp.cjs"
   },
   "devDependencies": {

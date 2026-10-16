@@ -1,7 +1,7 @@
 import { defineConfig } from '@playwright/test';
 
 const port = process.env.E2E_PORT || '8091';
-if (!/^\d+$/.test(port)) throw new Error('E2E_PORT debe ser numérico.');
+if (!/^\d+$/.test(port)) throw new Error('E2E_PORT must be numeric.');
 
 export default defineConfig({
   testDir: './tests',
@@ -9,11 +9,11 @@ export default defineConfig({
   expect: { timeout: 15000 },
   workers: 1,
   fullyParallel: false,
-  outputDir: 'artifacts/resultados',
+  outputDir: 'artifacts/results',
   reporter: [
     ['list'],
-    ['html', { outputFolder: 'artifacts/reporte-html', open: 'never' }],
-    ['json', { outputFile: 'artifacts/resultados.json' }]
+    ['html', { outputFolder: 'artifacts/html-report', open: 'never' }],
+    ['json', { outputFile: 'artifacts/results.json' }]
   ],
   use: {
     baseURL: `http://127.0.0.1:${port}`,

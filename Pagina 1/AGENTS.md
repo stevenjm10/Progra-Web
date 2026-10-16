@@ -1,9 +1,9 @@
-# Validación de interfaz
+# UI validation
 
-Este proyecto incluye el servidor MCP oficial de Playwright en `.codex/config.toml` y el agente `validador_ui` en `.codex/agents/validador-ui.toml`.
+The Playwright MCP server is configured in `.codex/config.toml`. The `ui_validator` agent is defined in `.codex/agents/ui-validator.toml`.
 
-Cuando el usuario pida validar la UI con el agente, usa `validador_ui` y las herramientas del MCP Playwright. Abre este proyecto como raíz de la sesión. Si el MCP aún no está disponible, informa que hay que volver a abrir la sesión y confiar en esta carpeta; no presentes pruebas directas de Playwright como si fueran llamadas MCP.
+When the user requests agent-based UI validation, use `ui_validator` with the Playwright MCP tools. Open the appropriate project as the session root. If MCP is unavailable, report that the session must be reopened with this configuration; do not present direct Playwright calls as MCP calls.
 
-El comando `npm test` ejecuta las pruebas automatizadas. `npm run test:e2e` ejecuta los recorridos del navegador. `npm run test:mcp` valida una conexión MCP real con el servidor local y usa sus herramientas. `npm run report` abre el informe HTML. El archivo `README.md` indica qué necesita el proyecto para arrancar y qué pruebas utilizan respuestas simuladas.
+Run `npm test` for the full browser suite, `npm run test:e2e` for UI workflows, `npm run test:mcp` for actual MCP calls and `npm run report` for the HTML report. Read the README for database and internet requirements.
 
-No cambies la aplicación durante una validación salvo que el usuario pida corregir errores. Conserva los datos existentes. Un platillo de prueba debe tener nombre único y se debe eliminar al terminar. Guarda capturas, resultados y errores en `artifacts/`; nunca informes como aprobada una prueba que no se ejecutó.
+Preserve existing data and clean up only uniquely named test records. Do not modify application code during validation unless the user asks for a fix. Keep code, comments and technical identifiers in English; keep the user-facing interface in Spanish. Save evidence under `artifacts/` and never claim unexecuted checks passed.

@@ -1,7 +1,7 @@
 BEGIN;
 
-INSERT INTO platillo (nombre, categoria, descripcion, precio, disponible)
-SELECT datos.nombre, datos.categoria, datos.descripcion, datos.precio, datos.disponible
+INSERT INTO dish (name, category, description, price, available)
+SELECT data.name, data.category, data.description, data.price, data.available
 FROM (VALUES
     ('Seco de pollo', 'Plato fuerte', 'Pollo guisado con arroz, maduro y ensalada.', 4.50, true),
     ('Encebollado', 'Sopa', 'Sopa de pescado con yuca, cebolla y cilantro.', 3.50, true),
@@ -13,12 +13,12 @@ FROM (VALUES
     ('Ensalada de pollo', 'Ensalada', 'Lechuga, tomate, pepino y pollo a la plancha.', 4.25, true),
     ('Flan de caramelo', 'Postre', 'Flan casero de leche con cobertura de caramelo.', 2.00, true),
     ('Torta de chocolate', 'Postre', 'Porción de torta de chocolate con cobertura cremosa.', 2.50, false)
-) AS datos(nombre, categoria, descripcion, precio, disponible)
+) AS data(name, category, description, price, available)
 WHERE NOT EXISTS (
-    SELECT 1 FROM platillo existente
-    WHERE lower(existente.nombre) = lower(datos.nombre)
+    SELECT 1 FROM dish existing
+    WHERE lower(existing.name) = lower(data.name)
 );
 
 COMMIT;
 
-SELECT id, nombre, categoria, precio, disponible FROM platillo ORDER BY id;
+SELECT id, name, category, price, available FROM dish ORDER BY id;

@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>uce.edu</groupId>
-	<artifactId>Platillos</artifactId>
+	<artifactId>Restaurant</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Platillos</name>
-	<description>PLATILLOS project for Spring Boot</description>
+	<name>Restaurant</name>
+	<description>Restaurant project for Spring Boot</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -28,7 +28,7 @@
 	</scm>
 	<properties>
 		<java.version>17</java.version>
-		<start-class>uce.edu.Platillos.PlatillosApplication</start-class>
+		<start-class>uce.edu.restaurant.RestaurantApplication</start-class>
 	</properties>
 	<dependencies>
 		<dependency>

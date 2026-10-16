@@ -4,7 +4,7 @@ const fs = require('node:fs');
 
 const root = path.resolve(__dirname, '../public');
 const port = Number(process.env.PORT || 3000);
-if (!Number.isInteger(port) || port < 1 || port > 65535) throw new Error('PORT no es válido.');
+if (!Number.isInteger(port) || port < 1 || port > 65535) throw new Error('PORT is invalid.');
 const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8' };
 const server = http.createServer((req, res) => {
   if (!['GET', 'HEAD'].includes(req.method)) { res.writeHead(405).end(); return; }

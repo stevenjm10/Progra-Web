@@ -1,42 +1,29 @@
 # Progra Web
 
-Dos proyectos independientes en un repositorio, con pruebas E2E y conexión al MCP oficial de Playwright.
+Two independent projects with English source code and a Spanish user interface. The folder names `Pagina 1` and `Pagina 2` are retained as requested.
 
-| Carpeta | Aplicación | Dirección normal |
+| Project | Description | Development URL |
 | --- | --- | --- |
-| [Pagina 1](Pagina%201/README.md) | Java 17, Spring Boot, PostgreSQL y CRUD de platillos | http://localhost:8080/ |
-| [Pagina 2](Pagina%202/README.md) | HTML, CSS y JavaScript vanilla con API de personajes, ubicaciones y episodios | http://localhost:3000/ |
+| [Pagina 1](Pagina%201/README.md) | Java 17, Spring Boot, PostgreSQL and dish CRUD | http://localhost:8080/ |
+| [Pagina 2](Pagina%202/README.md) | Vanilla JavaScript consuming the Rick and Morty API | http://localhost:3000/ |
 
-## Inicio
+## Run
 
-Cada carpeta tiene su propio package.json y package-lock.json. Necesitas Node.js 20+ y Microsoft Edge. Para Pagina 1 también necesitas Java 17 y PostgreSQL.
-
-Desde la carpeta del proyecto que quieras ejecutar:
+Use Node.js 20+ and Microsoft Edge. Page 1 also requires Java 17 and PostgreSQL. From the desired project directory:
 
 ```powershell
 npm ci
 npm start
 ```
 
-Pagina 1 incluye la configuración local de PostgreSQL directamente en application.properties; no requiere variables de entorno. Se usa la base reservas y la tabla platillo. Si es una base nueva, crea la base, ejecuta Spring Boot para generar la tabla y carga Pagina 1/datos-ejemplo.sql.
+Page 1 includes the user's local PostgreSQL settings for grading: database `reservas` on localhost:5432. Create that database first. Spring Boot creates the `dish` table. Run `sample-data.sql` to insert ten sample dishes. If upgrading from the previous Spanish database schema, run `migrate-legacy-schema.sql` before starting; it renames the table and columns without deleting records.
 
-## Pruebas y agente
+## Tests and MCP agent
 
-En cualquiera de las dos carpetas:
+Run `npm test` and then `npm run report` from either project directory. Test servers use ports 8090 and 8091 and are stopped automatically. Results are stored under `artifacts/` and are not committed.
 
-```powershell
-npm test
-npm run report
-```
+Both projects include Playwright E2E tests, an actual Playwright MCP connection test and the `ui_validator` agent. Page 1 tests use PostgreSQL and clean up their own temporary record. Page 2 deterministic tests mock API responses; `npm run test:live` also checks the real API. Its MCP test uses the real API.
 
-- test:e2e: recorridos de la interfaz. Pagina 1 usa PostgreSQL real y un registro temporal que elimina al terminar. Pagina 2 usa respuestas simuladas para las pruebas reproducibles.
-- test:mcp: conexión MCP real y uso de sus herramientas en el navegador.
-- test:live: activa las comprobaciones E2E con la API real de Rick and Morty.
-- Las pruebas arrancan y detienen sus propios servidores en 8090 y 8091.
-- Los informes y capturas se generan en artifacts/ y no se versionan.
+Open a project folder in Codex and reopen the session to load its MCP configuration. Ask: "Use ui_validator with Playwright MCP to validate the application and save evidence." The root MCP configuration uses Page 1's dependencies, so install those first if opening the entire repository.
 
-Cada proyecto incluye .codex/config.toml y el agente validador_ui. Al abrir la raíz de este repositorio en Codex también hay una configuración MCP común, que utiliza la instalación de Pagina 1 (ejecuta npm ci en Pagina 1 antes de usarla). Solicita el agente indicando el proyecto y su URL.
-
-La página de platillos muestra tarjetas solo de texto, búsqueda inmediata y páginas separadas para lista y nuevo/editar. La página de Rick and Morty muestra imágenes, detalles emergentes y búsqueda con debounce de cuatro segundos e indicador de carga.
-
-La configuración de PostgreSQL de localhost está incluida por petición del autor para la evaluación. También se incluye el script SQL con los 10 platillos de ejemplo. No se incluyen dependencias instaladas ni archivos compilados.
+Source code, filenames, variables, comments, API paths, JSON properties, tests and documentation use English. Visible labels, navigation, validation messages and sample dish content remain Spanish.

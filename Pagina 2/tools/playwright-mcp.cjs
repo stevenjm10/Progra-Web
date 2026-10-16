@@ -1,7 +1,7 @@
 const path = require('node:path');
 const { spawn } = require('node:child_process');
 
-// Se usa el MCP instalado en este proyecto, sin descargas al abrir el agente.
+// Use the locally installed MCP server without downloading it when starting the agent.
 const cli = path.resolve(__dirname, '../node_modules/@playwright/mcp/cli.js');
 const child = spawn(process.execPath, [
   cli, '--browser', process.env.PLAYWRIGHT_CHANNEL || 'msedge',

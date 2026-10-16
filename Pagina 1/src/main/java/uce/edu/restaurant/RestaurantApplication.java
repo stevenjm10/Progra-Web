@@ -1,11 +1,11 @@
-package uce.edu.Platillos;
+package uce.edu.restaurant;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PlatillosApplication {
+public class RestaurantApplication {
     public static void main(String[] args) {
-        SpringApplication.run(PlatillosApplication.class, args);
+        SpringApplication.run(RestaurantApplication.class, args);
     }
 }

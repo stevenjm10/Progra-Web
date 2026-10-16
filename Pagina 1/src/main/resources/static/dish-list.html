@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lista de platillos</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/dish-list.js"></script>
+</head>
+<body>
+  <header><h1>Lista de platillos</h1></header>
+  <main>
+    <p id="status" role="status" aria-live="polite">Cargando platillos...</p>
+    <button id="retry" type="button" hidden>Volver a cargar</button>
+    <div class="table-container">
+      <table>
+        <thead><tr><th>Nombre</th><th>Categoría</th><th>Precio</th><th>Disponible</th><th>Operaciones</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <p id="message" role="status" aria-live="polite"></p>
+  </main>
+  <footer><a class="button" href="/">Regresar</a></footer>
+</body>
+</html>

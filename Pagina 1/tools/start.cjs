@@ -4,7 +4,7 @@ const { spawn } = require('node:child_process');
 
 const root = path.resolve(__dirname, '..');
 const port = process.env.PORT || '8080';
-if (!/^\d+$/.test(port)) throw new Error('PORT debe ser numérico.');
+if (!/^\d+$/.test(port)) throw new Error('PORT must be numeric.');
 const env = { ...process.env };
 env.SERVER_PORT = port;
 if (process.platform === 'win32' && (!env.JAVA_HOME || !fs.existsSync(path.join(env.JAVA_HOME, 'bin/java.exe')))) {
