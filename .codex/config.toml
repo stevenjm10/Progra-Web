@@ -1,5 +1,5 @@
 [mcp_servers.playwright]
 command = "node"
-args = ["Platillos/tools/playwright-mcp.cjs"]
+args = ["Pagina 1/tools/playwright-mcp.cjs"]
 startup_timeout_sec = 30
 tool_timeout_sec = 90

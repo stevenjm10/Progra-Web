@@ -1,4 +1,4 @@
-# Proyecto 2: Rick and Morty
+# Pagina 2
 
 Proyecto independiente en HTML, CSS y JavaScript vanilla. No requiere Java, Spring Boot, PostgreSQL ni archivos del proyecto Platillos. Consume directamente la API pública de Rick and Morty.
 
@@ -38,7 +38,7 @@ Los resultados, capturas y trazas quedan en `artifacts/`. `npm run report` abre 
 
 El servidor se configura en `.codex/config.toml`; el agente `validador_ui` está definido en `.codex/agents/validador-ui.toml`. Usa Edge headless y un contexto aislado; no utiliza tu perfil personal del navegador.
 
-Abre **RickAndMorty como proyecto en Codex** y vuelve a abrir la sesión para cargar el MCP local. Confía en esta carpeta si Codex lo solicita. Arranca `npm start` y envía:
+Abre **Pagina 2 como proyecto en Codex** y vuelve a abrir la sesión para cargar el MCP local. Confía en esta carpeta si Codex lo solicita. Arranca `npm start` y envía:
 
 > Usa el agente validador_ui y el MCP Playwright para validar http://localhost:3000. Comprueba las tarjetas, las imágenes, los tres recursos de API, los detalles, el cierre, la paginación, el spinner y el debounce de cuatro segundos. Guarda resultados y capturas en artifacts/mcp.
 

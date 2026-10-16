@@ -1,10 +1,10 @@
-# Proyecto 1: Platillos
+# Pagina 1
 
 Proyecto independiente: Java 17, Spring Boot, PostgreSQL y frontend HTML/CSS/JavaScript vanilla. Ya no incluye Rick and Morty ni depende de su carpeta.
 
 ## Abrir la aplicación
 
-En NetBeans, abrir **esta carpeta Platillos**, hacer Clean and Build y Run. Dirección: **http://localhost:8080/**. La clase principal es `uce.edu.Platillos.PlatillosApplication`.
+En NetBeans, abrir **esta carpeta Pagina 1**, hacer Clean and Build y Run. Dirección: **http://localhost:8080/**. La clase principal es `uce.edu.Platillos.PlatillosApplication`.
 
 También puede arrancarse desde PowerShell en esta carpeta:
 
@@ -49,7 +49,7 @@ La prueba CRUD crea un registro de nombre único `E2E-...` y elimina solo ese re
 - `tools/playwright-mcp.cjs`: arranca la versión local del MCP en Edge headless con sesión aislada.
 - `tests/mcp/conexion.spec.js`: comprueba la conexión MCP y sus herramientas realmente; no simula el servidor MCP.
 
-Abre **Platillos como proyecto en Codex** y vuelve a abrir la sesión para cargar su configuración. Acepta la confianza de esta carpeta si Codex lo solicita. Arranca la aplicación y envía:
+Abre **Pagina 1 como proyecto en Codex** y vuelve a abrir la sesión para cargar su configuración. Acepta la confianza de esta carpeta si Codex lo solicita. Arranca la aplicación y envía:
 
 > Usa el agente validador_ui conectado al MCP Playwright para validar http://localhost:8080. Prueba navegación, búsqueda, crear, editar, recargar, eliminar y los botones Regresar. Conserva los registros anteriores y guarda el informe y las capturas en artifacts/mcp.
 
