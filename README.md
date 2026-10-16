@@ -18,7 +18,7 @@ npm ci
 npm start
 ```
 
-Para Pagina 1, configura primero DB_PASSWORD con tu contraseña de PostgreSQL; consulta su README. Se usa la base reservas y la tabla platillo. Si es una base nueva, crea la base, ejecuta Spring Boot para generar la tabla y carga Pagina 1/datos-ejemplo.sql.
+Pagina 1 incluye la configuración local de PostgreSQL directamente en application.properties; no requiere variables de entorno. Se usa la base reservas y la tabla platillo. Si es una base nueva, crea la base, ejecuta Spring Boot para generar la tabla y carga Pagina 1/datos-ejemplo.sql.
 
 ## Pruebas y agente
 
@@ -39,4 +39,4 @@ Cada proyecto incluye .codex/config.toml y el agente validador_ui. Al abrir la r
 
 La página de platillos muestra tarjetas solo de texto, búsqueda inmediata y páginas separadas para lista y nuevo/editar. La página de Rick and Morty muestra imágenes, detalles emergentes y búsqueda con debounce de cuatro segundos e indicador de carga.
 
-Las credenciales, bases de datos personales, dependencias instaladas y archivos compilados no se publican. Solo se incluyen los scripts SQL con platillos de ejemplo.
+La configuración de PostgreSQL de localhost está incluida por petición del autor para la evaluación. También se incluye el script SQL con los 10 platillos de ejemplo. No se incluyen dependencias instaladas ni archivos compilados.

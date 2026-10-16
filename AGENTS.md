@@ -6,4 +6,4 @@ La configuración MCP de la raíz usa Pagina 1/tools/playwright-mcp.cjs y necesi
 
 Cuando se solicite validar la interfaz con el agente, usa validador_ui y el servidor MCP playwright. Conserva los datos anteriores; elimina solo los registros temporales creados por la prueba. Informa qué pruebas usan API real o simulada y guarda evidencia en artifacts/. No informes una llamada Playwright directa como si fuera MCP.
 
-Nunca publiques credenciales de PostgreSQL ni agregues node_modules, target, artifacts o archivos .env a Git.
+Por petición explícita del usuario, la configuración de PostgreSQL de localhost se incluye para evaluación. No agregues credenciales de otros servicios, node_modules, target, artifacts ni archivos .env a Git.

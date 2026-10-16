@@ -55,15 +55,12 @@ Abre **Pagina 1 como proyecto en Codex** y vuelve a abrir la sesión para cargar
 
 La definición del agente y el MCP están integrados en el proyecto. El agente se ejecuta cuando lo solicitas en una sesión que haya cargado esta configuración; las pruebas npm son automatización reproducible y no una llamada a un modelo de IA. Si no aparecen herramientas Playwright en Codex, hay que recargar esa sesión, no afirmar que el MCP está activo en una sesión antigua.
 
-## Configuración de PostgreSQL para esta copia de GitHub
+## PostgreSQL para la evaluación
 
-La contraseña no está incluida en el repositorio. Antes de ejecutar la aplicación o sus pruebas E2E, define las variables en la misma terminal PowerShell:
+La URL, el usuario y la contraseña de PostgreSQL ya están definidos en `src/main/resources/application.properties`, tal como pidió el autor. No se necesitan variables de entorno.
 
-```powershell
-$env:DB_PASSWORD = 'TU_CLAVE_DE_POSTGRES'
-$env:DB_USER = 'postgres'
-$env:DB_URL = 'jdbc:postgresql://localhost:5432/reservas'
-npm start
-```
+1. Tener PostgreSQL activo en `localhost:5432` y creada la base `reservas`.
+2. Abrir este proyecto en NetBeans y ejecutar Run, o usar `npm start`.
+3. Spring Boot crea la tabla `platillo` si aún no existe. Para cargar los 10 ejemplos en una base nueva, ejecutar `datos-ejemplo.sql` en esa base. El script evita repetir los nombres existentes.
 
-En NetBeans, configura DB_PASSWORD en el entorno de ejecución o inicia NetBeans desde una terminal que ya tenga esa variable. El archivo datos-ejemplo.sql contiene los 10 platillos de ejemplo para una base nueva; los registros personales de PostgreSQL no se suben a GitHub.
+Si el PostgreSQL del equipo del evaluador usa otro usuario o contraseña, se ajustan en `application.properties`.
