@@ -8,7 +8,7 @@ Reviewed on 2026-10-25. This document belongs to the local dev branch; main rema
 - test: validation branch, published on GitHub.
 - dev: local development branch, intentionally not published.
 
-All three start at the same application commit. A branch is a Git history reference, not a folder, deployment or test runner. Creating test does not run tests automatically. There are currently no GitHub Actions workflows, required checks or configured AWS deployments in this repository.
+All three start at the same application commit. A branch is a Git history reference, not a folder, deployment or test runner. Creating test does not run tests automatically. The Validate projects GitHub Actions workflow runs on test/main pushes and pull requests. Repository protections must require its checks to enforce them. AWS deployment is not configured.
 
 ## Daily development
 
@@ -69,7 +69,7 @@ Checks executed during this review:
 ## Remaining requirements and deployment limits
 
 - Both frontends currently use fetch; jQuery and Axios are not integrated. If required by the assignment, implement them in dev and repeat validation before promotion.
-- main/test have no enforced PR review or automated CI yet. A workflow and repository rules are separate setup tasks.
+- CI is defined in .github/workflows/validate.yml; enforce the checks using repository branch protections where supported. See JIRA-WORKFLOW.md for task links and review policy.
 - Local database credentials are committed by the author's earlier explicit request for grading. Use separate environment configuration and credentials before exposing a cloud deployment.
 - Write endpoints have no authentication or authorization. This is acceptable for a local demonstration, but access control or a restricted demo environment is needed before public use.
 - PostgreSQL is configured on localhost; that refers to the cloud server itself after deployment, not the student's computer. AWS needs a reachable database or a local database on the instance.
