@@ -27,3 +27,7 @@ Both projects include Playwright E2E tests, an actual Playwright MCP connection 
 Open a project folder in Codex and reopen the session to load its MCP configuration. Ask: "Use ui_validator with Playwright MCP to validate the application and save evidence." The root MCP configuration uses Page 1's dependencies, so install those first if opening the entire repository.
 
 Source code, filenames, variables, comments, API paths, JSON properties, tests and documentation use English. Visible labels, navigation, validation messages and sample dish content remain Spanish.
+
+## Docker on AWS
+
+See [DOCKER.md](DOCKER.md) for the three-container deployment, existing data migration, verification and rollback. Copy .env.example to .env before running docker compose up -d --build.

@@ -36,7 +36,7 @@ Include a real Jira key in commit messages and PR titles, for example `KAN-3 Con
 
 Work in local dev, commit changes, merge to test and push test. The Validate projects workflow runs Java endpoint tests and both browser E2E suites on test/main pushes and PRs targeting those branches. CI uses its own disposable PostgreSQL database, never the student's local database. Character tests mock API responses to avoid relying on external service availability. Live API and MCP checks remain explicit separate checks.
 
-Open a test-to-main PR with its Jira key and review the checks. The Release path job rejects PRs targeting main from any branch other than this repository's test. This check is enforceable only when repository branch protection/rules require it; the workflow alone does not prevent direct pushes or unchecked merges.
+Open a test-to-main PR with its Jira key and review the checks. The Release path job rejects PRs targeting main from any branch other than this repository's test. Main branch protection is configured to require a pull request, an up-to-date branch and all three checks: Release path, Java and dish UI, Character UI. Force pushes and branch deletion are disabled. No separate approving reviewer is required because this is an individual project; merging remains a manual action.
 
 No automatic merge or AWS deployment is configured. Actual cloud provisioning, lab access, environment settings, database access and external URLs must be confirmed separately. Keep AWS credentials out of source code and Jira comments.
 
