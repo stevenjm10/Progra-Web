@@ -47,7 +47,9 @@ test('three resources, image cards, details and Escape dismissal', async ({ page
 });
 
 test('4000 ms debounce, keystroke reset, spinner and empty results', async ({ page }) => {
-  await page.clock.install();
+  // Freeze wall-clock progress so CI latency cannot advance the debounce timer.
+  await page.clock.install({ time: new Date('2026-01-01T00:00:00Z') });
+  await page.clock.pauseAt(new Date('2026-01-01T00:00:01Z'));
   const requests = await mockApi(page);
   await page.goto('/');
   await expect(page.locator('.character')).toHaveCount(1);
