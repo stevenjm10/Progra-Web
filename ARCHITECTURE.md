@@ -20,11 +20,9 @@ Return to one instance with:
 docker compose up -d --scale app=1 --wait
 ```
 
-## Deferred AWS phase
+## AWS deployment
 
-AWS API Gateway and an AWS load balancer are not provisioned by this repository. In the Academy account, confirm permitted services before choosing an ALB or API Gateway integration. API Gateway can route API traffic and apply authentication/throttling; ALB can distribute HTTP traffic across targets. Neither is required to conceal internal Docker ports: those ports are already unpublished.
-
-Configure HTTPS and its certificate as a separate AWS delivery. HTTP URLs must begin with http:// until then. EC2 public addresses can change after stopping the instance.
+The AWS deployment now uses API Gateway, a VPC Link and an internal ALB. See [AWS-GATEWAY.md](AWS-GATEWAY.md) for the network, resource IDs and update procedure. EC2 runs two Java replicas behind Nginx; the public entry point uses HTTPS.
 
 ## Review scope
 
