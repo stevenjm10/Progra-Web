@@ -2,7 +2,7 @@
 
 This repository is a monorepo containing two independently runnable projects. Page 1 is a Spring Boot monolith: its HTTP API and dish frontend ship in one Java application. Page 2 is static HTML/CSS/JavaScript. Maven remains the Java build tool.
 
-Nginx serves Page 2 and forwards Page 1/API requests to Java. PostgreSQL and Java have no published host ports. The browser uses HTTP port 80; HTTPS has not been configured.
+Nginx serves Page 2 and forwards Page 1/API requests to Java. PostgreSQL and Java have no published host ports. Local Docker uses HTTP port 80. The AWS public endpoint uses HTTPS through API Gateway.
 
 ## Optional load balancing
 
