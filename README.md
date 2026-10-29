@@ -31,3 +31,7 @@ Source code, filenames, variables, comments, API paths, JSON properties, tests a
 ## Docker on AWS
 
 See [DOCKER.md](DOCKER.md) for the three-container deployment, existing data migration, verification and rollback. Copy .env.example to .env before running docker compose up -d --build.
+
+## Repository task orchestration
+
+Run `npm ci` at the repository root, then `npm run setup` to install each independent application. `npm run dev` starts both pages through Turborepo. `npm run test:e2e` schedules the two deterministic browser suites. Java tests still use Maven. Turborepo root tasks delegate to the existing project scripts, preserving their separate lockfiles and standalone CI workflows. Runtime/database-dependent tests are deliberately not cached. Database settings and browser selection are passed explicitly through the task environment.

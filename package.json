@@ -1,0 +1,18 @@
+{
+  "name": "progra-web",
+  "private": true,
+  "version": "1.0.0",
+  "packageManager": "npm@11.19.0",
+  "scripts": {
+    "test:e2e": "turbo run test:dishes test:characters",
+    "test:dishes": "npm --prefix \"Pagina 1\" run test:e2e",
+    "test:characters": "npm --prefix \"Pagina 2\" run test:e2e",
+    "dev": "turbo run dev:dishes dev:characters",
+    "dev:dishes": "npm --prefix \"Pagina 1\" start",
+    "dev:characters": "npm --prefix \"Pagina 2\" start",
+    "setup": "npm --prefix \"Pagina 1\" ci && npm --prefix \"Pagina 2\" ci"
+  },
+  "devDependencies": {
+    "turbo": "2.11.10"
+  }
+}
