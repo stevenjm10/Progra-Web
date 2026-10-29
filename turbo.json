@@ -1,0 +1,32 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
+    "test:dishes": {
+      "cache": false,
+      "passThroughEnv": [
+        "SPRING_DATASOURCE_*",
+        "JAVA_HOME",
+        "PLAYWRIGHT_CHANNEL",
+        "E2E_PORT"
+      ]
+    },
+    "test:characters": {
+      "cache": false,
+      "passThroughEnv": [
+        "PLAYWRIGHT_CHANNEL"
+      ]
+    },
+    "dev:dishes": {
+      "cache": false,
+      "persistent": true,
+      "passThroughEnv": [
+        "SPRING_DATASOURCE_*",
+        "JAVA_HOME"
+      ]
+    },
+    "dev:characters": {
+      "cache": false,
+      "persistent": true
+    }
+  }
+}
